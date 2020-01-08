@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML5 Canvas</title>
+</head>
+<body>
+<canvas id="draw" width="800" height="800"></canvas>
+<script>
+  let x=0;
+  let y=0;
+  let k=true;
+  function draw(e){
+    if(!flag)return;
+
+    contx.strokeStyle=`hsl(${h},100%,50%)`;
+    contx.beginPath();
+    contx.moveTo(x,y);
+    contx.lineTo(e.offsetX,e.offsetY);
+    contx.stroke();
+    x=e.offsetX;
+    y=e.offsetY;
+    h++;
+    if(contx.lineWidth>=100||contx.lineWidth<=1){
+      k=!k;
+    }
+    if(k){
+      contx.lineWidth++;
+    }
+    else{
+      contx.lineWidth--;
+    }
+  }
+  const canvas= document.querySelector("#draw");
+  canvas.height= window.innerHeight;
+  canvas.width= window.innerWidth;
+  const contx= canvas.getContext("2d");
+  contx.strokeStyle="#BADA55";
+  contx.lineJoin="round";
+  contx.lineCap="round";
+  let h=0;
+  let flag=false;
+  canvas.addEventListener("mousemove",draw);
+  canvas.addEventListener("mousedown",(e)=>{
+    x=e.offsetX;
+    y=e.offsetY;
+    flag=true;
+  });
+  canvas.addEventListener("mouseup",()=>{
+    flag=false;
+  });
+  canvas.addEventListener("mouseout",()=>{
+    flag=false;
+  });
+
+
+  
+</script>
+
+
+<style>
+  html, body {
+    margin: 0;
+  }
+</style>
+
+</body>
+</html>
