@@ -3,8 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title>HTML5 Canvas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
 <body>
+<div class="heading" onclick="#" >
+	<h1>HTML5 Canvas</h1>
+</div>
 <canvas id="draw" width="800" height="800"></canvas>
 <script>
   let x=0;
@@ -61,6 +65,19 @@
 <style>
   html, body {
     margin: 0;
+  }
+  .heading {
+  	justify-content: center;
+  	text-align: center;
+  	font-family: "Lucida Console", Courier, monospace;
+  	color: #080808;
+  	width: 100%;
+  	padding: 10px;
+  	background-color: #a6dced;
+  }
+  .heading:hover {
+  	cursor: pointer;
+  	font-size: 16.5px;
   }
 </style>
 
